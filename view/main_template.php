@@ -33,7 +33,7 @@
     <?php
     if(isset($_GET['url'])){
         $url=$_GET['url'];
-        if($url=='institutions' || $url=='books' || $url=='edit_institution'){
+        if($url=='institutions' || $url=='books' || $url=='edit_institution' || $url=='edit_book'){
             include "pages/".$url.".php";
         }
     }else{

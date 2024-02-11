@@ -70,22 +70,22 @@ class Book{
 
     public function registerBook(){
         try {
-            $pdo=ConnectionMySQL::openConnection();
-            $query="INSERT INTO libro(idBiblioteca,name,autor,description) VALUES(:idinstitution,:name,:author,:description)";
-            $stmt=$pdo->prepare($query);
-
-            if($this->idInstitution === -1){
+            if($this->getIdInstitution() == -1){
                 return false;
-            }
-            
-            $stmt->bindParam(":idinstitution",$this->idInstitution,PDO::PARAM_INT);
-            $stmt->bindParam(":name",$this->name,PDO::PARAM_STR);
-            $stmt->bindParam(":author",$this->author,PDO::PARAM_STR);
-            $stmt->bindParam(":description",$this->description,PDO::PARAM_STR);
-            if($stmt->execute()){
-                return true;
             }else{
-                return false;
+                $pdo=ConnectionMySQL::openConnection();
+                $query="INSERT INTO libro(idBiblioteca,name,autor,description) VALUES(:idinstitution,:name,:author,:description)";
+                $stmt=$pdo->prepare($query);
+                
+                $stmt->bindParam(":idinstitution",$this->idInstitution,PDO::PARAM_INT);
+                $stmt->bindParam(":name",$this->name,PDO::PARAM_STR);
+                $stmt->bindParam(":author",$this->author,PDO::PARAM_STR);
+                $stmt->bindParam(":description",$this->description,PDO::PARAM_STR);
+                if($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         } catch (PDOException $e) {
             echo "Error: ".$e->getMessage();
@@ -98,7 +98,7 @@ class Book{
             $query="UPDATE libro SET idBiblioteca=:idBiblioteca,name=:name,autor=:author,description=:description WHERE id=:id";
             $stmt=$pdo->prepare($query);
 
-            if($this->idInstitution !== -1){
+            if($this->idInstitution === -1){
                 return false;
             }
             

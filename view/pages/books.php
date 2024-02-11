@@ -168,7 +168,7 @@ if(isset($_POST['search'])){
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <div class="px-1">
-                                    <a href="index.php?url=edit_institution&idinstitution=<?php echo $value["id"]; ?>"
+                                    <a href="index.php?url=edit_book&idbook=<?php echo $value["id"]; ?>"
                                         class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
                                 </div>
                                 <form method="post">

@@ -34,7 +34,6 @@ if(isset($_POST['search'])){
                         <th>Autor</th>
                         <th>Descripción</th>
                         <th>Fecha Registro</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,23 +45,6 @@ if(isset($_POST['search'])){
                         <td><?php echo $value["autor"];?></td>
                         <td><?php echo $value["description"];?></td>
                         <td><?php echo $value["register_date"];?></td>
-                        <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <div class="px-1">
-                                    <a href="index.php?url=edit&idbook=<?php echo $value["id"]; ?>"
-                                        class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                                </div>
-                                <form method="post">
-                                    <input type="hidden" value="<?php echo $value["id"]; ?>" name="idbook">
-                                    <button type="submit" class="btn btn-danger"><i
-                                            class="fa-solid fa-trash"></i></button>
-                                    <?php
-                                        //$delete=new ControllerForms();
-								        //$delete -> ctrlDeleteUser();
-							        ?>
-                                </form>
-                            </div>
-                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
